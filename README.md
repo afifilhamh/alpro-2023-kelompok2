@@ -1,2 +1,2 @@
 # alpro-2023-kelompok2
-Coba-coba
+Rencana sementara judul proyek yang akan dikerjakan
