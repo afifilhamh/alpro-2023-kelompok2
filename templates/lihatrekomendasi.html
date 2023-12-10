@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB MATCH: Job Recommendation Based on Your Needs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #77AFDD;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #header {
+            background-color: #233B65;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        #navigation {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            background-color: #233B65;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #E1F0F6;
+            color: #233B65;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            color: #E1F0F6;
+            margin-left: 20px;
+            margin-bottom:10px;
+        }
+        
+        p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 22px;
+            border-radius: 15px;
+            color:#233B65;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 80%
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="navigation">
+            <a href="http://127.0.0.1:5000/" class="button">Halaman Utama</a>
+            <a href="http://127.0.0.1:5000/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
+            <a href="http://127.0.0.1:5000/tentangkami" class="button">Tentang Kami</a>
+        </div>
+        <img id="logo" src="/static/logo.png" alt="Logo">
+    </div>
+
+    <div class="result-container">
+        <h2>HASIL REKOMENDASI</h2>
+        <p>{{nama}}, menurut JOBMATCH, posisi yang cocok untukmu di perusahaan adalah <b>{{ prediction }}</b></p>
+    </div>
+
+    <div class="insight-container">
+        <h2>Insight Tentang {{ prediction }}</h2>
+        <p id="insightParagraph"> </p>
+    </div>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mendapatkan elemen insight container dan paragraph
+        const insightParagraph = document.getElementById('insightParagraph');
+
+        // Mendapatkan nilai prediction dari template
+        const prediction = "{{ prediction }}";
+
+        // Menetapkan insight berdasarkan prediction
+        switch (prediction) {
+            case "Sales Executive":
+                insightParagraph.textContent = "Sales Executive adalah posisi yang bertanggung jawab untuk menjual produk atau layanan perusahaan kepada pelanggan. Pekerja ini perlu memiliki keterampilan komunikasi yang baik dan kemampuan untuk mencapai target penjualan.";
+                break;
+            case "Research Scientist":
+                insightParagraph.textContent = "Research Scientist adalah posisi yang terlibat dalam kegiatan penelitian dan pengembangan. Mereka menggunakan pengetahuan ilmiah untuk mengembangkan produk, teknologi, atau solusi untuk masalah tertentu.";
+                break;
+            case "Laboratory Technician":
+                insightParagraph.textContent = "Laboratory Technician adalah posisi yang bekerja di laboratorium untuk melakukan pengujian dan analisis sampel. Mereka biasanya mendukung penelitian dan pengembangan dengan mengumpulkan data.";
+                break;
+            case "Manufacturing Director":
+                insightParagraph.textContent = "Manufacturing Director adalah posisi manajemen yang bertanggung jawab atas operasi manufaktur. Tugas mereka mencakup perencanaan produksi, pengendalian kualitas, dan efisiensi proses.";
+                break;
+            case "Healthcare Representative":
+                insightParagraph.textContent = "Healthcare Representative adalah posisi penjualan yang fokus pada produk atau layanan kesehatan. Mereka bekerja dengan profesional kesehatan dan organisasi untuk memasarkan produk.";
+                break;
+            case "Manager":
+                insightParagraph.textContent = "Manager adalah posisi manajemen tingkat menengah yang bertanggung jawab atas tim atau departemen. Tugas mereka mencakup pengambilan keputusan, perencanaan, dan koordinasi.";
+                break;
+            case "Sales Representative":
+                insightParagraph.textContent = "Sales Representative adalah posisi penjualan yang berinteraksi langsung dengan pelanggan. Mereka mempromosikan dan menjual produk atau layanan perusahaan kepada prospek atau pelanggan.";
+                break;
+            case "Research Director":
+                insightParagraph.textContent = "Research Director adalah pemimpin tim penelitian yang bertanggung jawab atas strategi dan arah penelitian. Mereka bekerja untuk mencapai tujuan penelitian organisasi.";
+                break;
+            case "Human Resources":
+                insightParagraph.textContent = "Human Resources adalah departemen yang menangani manajemen sumber daya manusia dalam organisasi. Tugas mereka meliputi perekrutan, pelatihan, dan kebijakan karyawan.";
+                break;
+            default:
+                insightParagraph.textContent = "Posisi ini tidak memiliki informasi insight saat ini.";
+        }
+    });
+</script>
+
+</html>
