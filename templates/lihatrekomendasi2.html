@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB MATCH: Job Recommendation Based on Your Needs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #77AFDD;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #header {
+            background-color: #233B65;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        #navigation {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            background-color: #233B65;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #E1F0F6;
+            color: #233B65;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            color: #E1F0F6;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+
+        .result-container p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 22px;
+            border-radius: 15px;
+            color: #233B65;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 80%
+        }
+
+        .insight-container p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            border-radius: 15px;
+            color: #233B65;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px
+        }
+        
+        .insight-container {
+            width: 83%
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="navigation">
+            <a href="http://127.0.0.1:5000/" class="button">Halaman Utama</a>
+            <a href="http://127.0.0.1:5000/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
+            <a href="http://127.0.0.1:5000/tentangkami" class="button">Tentang Kami</a>
+        </div>
+        <img id="logo" src="/static/logo.png" alt="Logo">
+    </div>
+
+    <div class="result-container">
+        <h2>HASIL REKOMENDASI</h2>
+        <p>{{nama}}, menurut JOBMATCH, posisi yang cocok untukmu di perusahaan adalah <b>{{ prediction }}</b></p>
+    </div>
+
+    <div class="insight-container">
+        <h2>Insight Tentang {{ prediction }}</h2>
+        <div style="display: flex;">
+            <p id="baseInsight" style="flex: 1;"></p>
+            <p id="insightParagraph" style="flex: 1; margin-left: 20px;"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mendapatkan elemen insight container dan paragraph
+            const insightParagraph = document.getElementById('insightParagraph');
+            const baseInsightElement = document.getElementById('baseInsight');
+
+            // Mendapatkan nilai prediction dari template
+            const prediction = "{{ prediction }}";
+            const overtime = "{{ overtime }}";
+            const totalYears = parseInt("{{ totalYears }}");
+            const businessTravel = "{{ businessTravel }}";
+            const educationField = "{{ educationField }}"; 
+
+            // Menetapkan insight berdasarkan prediction
+            switch (prediction) {
+            case "Sales Executive":
+                insightParagraph.textContent = "Sales Executive memiliki tanggung jawab dalam menjual produk atau layanan kepada pelanggan perusahaan. Dalam perannya, keterampilan komunikasi yang baik menjadi kunci, seiring dengan kemampuan untuk mencapai target penjualan. Pekerja dalam posisi ini memerlukan keahlian tersebut untuk sukses dalam menarik pelanggan dan mencapai hasil penjualan yang diinginkan.";
+                break;
+            case "Research Scientist":
+                insightParagraph.textContent = "Sebagai seorang Research Scientist, perannya terlibat secara aktif dalam kegiatan penelitian dan pengembangan. Mereka menerapkan pengetahuan ilmiah untuk menghasilkan produk, teknologi, atau solusi yang dapat mengatasi permasalahan khusus. Posisi ini mendorong penggunaan pengetahuan dalam menciptakan inovasi dan solusi yang relevan dengan masyarakat.";
+                break;
+            case "Laboratory Technician":
+                insightParagraph.textContent = "Laboratory Technician merupakan pekerjaan di laboratorium yang fokus pada pengujian dan analisis sampel. Tugasnya meliputi mendukung kegiatan penelitian dan pengembangan dengan mengumpulkan data. Peran ini penting dalam memastikan ketepatan dan kualitas data yang digunakan dalam proses penelitian.";
+                break;
+            case "Manufacturing Director":
+                insightParagraph.textContent = "Sebagai seorang Manufacturing Director, mereka memiliki peran manajerial yang menaungi operasi manufaktur. Tanggung jawab utamanya mencakup perencanaan produksi, pengawasan terhadap kualitas, dan optimalisasi efisiensi proses manufaktur. Posisi ini memiliki dampak besar dalam mengelola dan memastikan kelancaran operasional serta produktivitas di bidang manufaktur.";
+                break;
+            case "Healthcare Representative":
+                insightParagraph.textContent = "Sebagai seorang Healthcare Representative, posisinya bertumpu pada aspek penjualan produk atau layanan kesehatan. Tugas utamanya adalah bekerja sama dengan profesional kesehatan dan organisasi untuk mempromosikan serta memasarkan produk. Dalam perannya, mereka menggarisbawahi pentingnya menjembatani produk kesehatan dengan kebutuhan serta kepentingan dari pihak-pihak terkait di bidang kesehatan.";
+                break;
+            case "Manager":
+                insightParagraph.textContent = "Manager adalah seorang profesional dalam bidang manajemen yang menjabat sebagai bagian tengah dalam hierarki manajemen perusahaan. Posisi ini mengharuskan individu untuk mengelola tim atau departemen secara efektif. Tanggung jawab utamanya meliputi pengambilan keputusan, perencanaan strategis, serta koordinasi pelaksanaan tugas di antara anggota tim. Seorang manager bertanggung jawab atas mengawasi operasional harian, memastikan pencapaian target, serta mengarahkan sumber daya untuk mencapai tujuan perusahaan.";
+                break;
+            case "Sales Representative":
+                insightParagraph.textContent = "Sales Representative adalah individu di dalam departemen penjualan yang memiliki peran langsung dalam berinteraksi dengan pelanggan. Posisi ini melibatkan promosi serta penjualan produk atau layanan dari perusahaan kepada calon pelanggan atau klien yang sudah ada. Tugas utamanya termasuk membangun hubungan baik dengan pelanggan, menyampaikan informasi produk, dan menawarkan solusi yang sesuai dengan kebutuhan pelanggan. Seorang Sales Representative berperan penting dalam menciptakan hubungan jangka panjang dengan pelanggan serta mencapai target penjualan perusahaan.";
+                break;
+            case "Research Director":
+                insightParagraph.textContent = "Research Director merupakan individu yang memimpin tim penelitian di suatu organisasi. Posisi ini memiliki tanggung jawab besar dalam merumuskan strategi dan arah penelitian yang akan diambil. Tugas utamanya meliputi mengarahkan tim untuk mencapai tujuan penelitian yang telah ditetapkan oleh organisasi. Selain itu, mereka juga bertanggung jawab dalam mengembangkan rencana dan metode penelitian yang efektif, serta mengawasi progres dan hasil dari kegiatan riset yang dilakukan oleh tim penelitian. Peran Research Director sangat penting dalam menentukan langkah-langkah strategis yang diperlukan untuk pencapaian tujuan penelitian organisasi.";
+                break;
+            case "Human Resources":
+                insightParagraph.textContent = "Human Resources (SDM) merupakan departemen kunci dalam sebuah organisasi yang bertanggung jawab atas manajemen sumber daya manusia. Tugas utama SDM meliputi beragam aspek, mulai dari proses perekrutan tenaga kerja yang tepat, mengelola pelatihan dan pengembangan karyawan, hingga pembuatan kebijakan yang mengatur hubungan antara organisasi dan karyawannya. Departemen ini memiliki peran penting dalam memastikan bahwa organisasi memiliki tim yang berkualitas dan terlatih dengan baik, serta menciptakan lingkungan kerja yang kondusif bagi pertumbuhan dan produktivitas karyawan.";
+                break;
+            default:
+                insightParagraph.textContent = "Posisi ini tidak memiliki informasi insight saat ini.";
+        }
+
+            // Rasionalisasi
+            const baseInsightText = `Hi {{ nama }}, dengan bidang yang  Anda kuasai yaitu ${educationField}, serta pengalaman Anda sebelumnya selama ${totalYears} tahun di perusahaan, Anda memiliki fondasi yang kuat untuk memperdalam karier di posisi ${prediction}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen ${prediction} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. `;
+
+            if (overtime === 'Y') {
+                if (totalYears > 0) {
+                    if (businessTravel === 'Non-Travel') {
+                        baseInsightElement.textContent = `${baseInsightText}Tanpa mengharuskan Anda berdinas ke luar kota, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.`;
+                    } else {
+                        baseInsightElement.textContent = `${baseInsightText}Dengan fleksibilitas dalam dinas ke luar kota, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.`;
+                    }
+                } else {
+                    if (businessTravel === 'Non-Travel') {
+                        baseInsightElement.textContent = `${baseInsightText}Tanpa mengharuskan Anda berdinas ke luar kota, dan kesiapan Anda untuk belajar dan menyesuaikan diri, Anda dapat menemukan peluang yang besar untuk tumbuh dan berkembang di bidang ini.`;
+                    } else {
+                        baseInsightElement.textContent = `${baseInsightText}Dengan fleksibilitas dalam dinas ke luar kota, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.`;
+                    }
+                }
+            } else {
+                if (totalYears > 0) {
+                    if (businessTravel === 'Non-Travel') {
+                        baseInsightElement.textContent = `${baseInsightText}Tanpa mengharuskan Anda berdinas ke luar kota dan berlembur, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.`;
+                    } else {
+                        baseInsightElement.textContent = `${baseInsightText}Dengan fleksibilitas dalam dinas ke luar kota tanpa lembur, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.`;
+                    }
+                } else {
+                    if (businessTravel === 'Non-Travel') {
+                        baseInsightElement.textContent = `${baseInsightText}Tanpa mengharuskan Anda berdinas ke luar kota dan berlembur, dan kesiapan Anda untuk belajar dan menyesuaikan diri, Anda dapat menemukan peluang yang besar untuk tumbuh dan berkembang di bidang ini.`;
+                    } else {
+                        baseInsightElement.textContent = `${baseInsightText}Dengan fleksibilitas dalam dinas ke luar kota tanpa lembur, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.`;
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
