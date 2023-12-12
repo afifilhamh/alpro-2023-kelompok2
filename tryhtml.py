@@ -35,7 +35,11 @@ def seeResult():
         hasil_data = {key: [value] for key, value in data.items() if key != 'Name'}
         hasil_df = pd.DataFrame(hasil_data)
 
-        nama = data['Name']
+        nama = data['Name'];
+        overtime = data["OverTime"];
+        totalYears = ['TotalWorkingYears'];
+        businessTravel = ['BusinessTravel'];
+        educationBackground = ['Education']
 
         job_positions = [
             "Sales Executive",
@@ -51,7 +55,7 @@ def seeResult():
 
         prediction = random.choice(job_positions) #untuk testing html maka ini dirandom dulu, tapi nanti tologn diganti dengan modelnya
 
-        return render_template('lihatrekomendasi.html', nama=nama, prediction=prediction)
+        return render_template('lihatrekomendasi.html', nama=nama, prediction=prediction, overtime=overtime, totalYears=totalYears, businessTravel=businessTravel, educationBackground=educationBackground)
 
 @app.route('/tentangkami')
 def aboutUs():
