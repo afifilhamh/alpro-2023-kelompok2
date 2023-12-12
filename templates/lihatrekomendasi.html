@@ -114,6 +114,11 @@
 
         // Mendapatkan nilai prediction dari template
         const prediction = "{{ prediction }}";
+        const overtime = "{{ overtime }}";
+        const totalYears = parseInt("{{ totalYears }}");
+        const businessTravel = "{{ businessTravel }}";
+        const educationBackground = "{{ educationBackground }}";
+        
 
         // Menetapkan insight berdasarkan prediction
         switch (prediction) {
@@ -146,6 +151,39 @@
                 break;
             default:
                 insightParagraph.textContent = "Posisi ini tidak memiliki informasi insight saat ini.";
+        }
+
+        //rasionalisasi
+        
+        if (overtime === 'Y'){
+            if (totalYears > 0) {
+                if (businessTravel === 'Non-Travel') {
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, serta pengalaman Anda sebelumnya selama {{ totalYears }} tahun, Anda memiliki fondasi yang kuat untuk memperdalam karier di departemen {{ prediction }}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen {{ prediction }} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Tanpa mengharuskan Anda berdinas ke luar kota, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.";
+                } else{
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, serta pengalaman Anda sebelumnya selama {{ totalYears }} tahun, Anda memiliki fondasi yang kuat untuk memperdalam karier di departemen {{ prediction }}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen {{ prediction }} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Dengan fleksibilitas dalam dinas ke luar kota, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.";
+                }
+            } else {
+                if (businessTravel === 'Non-Travel') {
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, Anda memiliki fondasi yang kuat untuk memulai karier di departemen {{ prediction }}. Meskipun Anda mungkin belum memiliki pengalaman sebelumnya di departemen ini, komitmen Anda untuk belajar dan berkembang merupakan nilai tambah yang besar. Kami merekomendasikan pekerjaan di departemen {{ prediction }} sebagai awal yang baik. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Tanpa mengharuskan Anda berdinas ke luar kota, dan kesiapan Anda untuk belajar dan menyesuaikan diri, Anda dapat menemukan peluang yang besar untuk tumbuh dan berkembang di bidang ini.";
+                } else{
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, Anda memiliki fondasi yang kuat untuk memperdalam karier di departemen {{ prediction }}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen {{ prediction }} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Dengan fleksibilitas dalam dinas ke luar kota, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.";
+                }
+            }
+        } else {
+            if (totalYears > 0) {
+                if (businessTravel === 'Non-Travel') {
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, serta pengalaman Anda sebelumnya selama {{ totalYears }} tahun, Anda memiliki fondasi yang kuat untuk memperdalam karier di departemen {{ prediction }}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen {{ prediction }} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Tanpa mengharuskan Anda berdinas ke luar kota dan berlembur, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.";
+                } else{
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, serta pengalaman Anda sebelumnya selama {{ totalYears }} tahun, Anda memiliki fondasi yang kuat untuk memperdalam karier di departemen {{ prediction }}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen {{ prediction }} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Dengan fleksibilitas dalam dinas ke luar kota tanpa lembur, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.";
+                }
+            } else {
+                if (businessTravel === 'Non-Travel') {
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{educationBackground}}, Anda memiliki fondasi yang kuat untuk memulai karier di departemen {{ prediction }}. Meskipun Anda mungkin belum memiliki pengalaman sebelumnya di departemen ini, komitmen Anda untuk belajar dan berkembang merupakan nilai tambah yang besar. Kami merekomendasikan pekerjaan di departemen {{ prediction }} sebagai awal yang baik. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Tanpa mengharuskan Anda berdinas ke luar kota dan berlembur, dan kesiapan Anda untuk belajar dan menyesuaikan diri, Anda dapat menemukan peluang yang besar untuk tumbuh dan berkembang di bidang ini.";
+                } else{
+                    insightParagraph.textContent = "Hi {{ nama }}, dengan tingkat pendidikan Anda di bidang {{ educationBackground }}, Anda memiliki fondasi yang kuat untuk memperdalam karier di departemen {{ prediction }}. Kombinasi pendidikan Anda yang kuat dan pengalaman sebelumnya akan memberikan kontribusi yang berarti. Kami merekomendasikan posisi di departemen {{ prediction }} sebagai langkah lanjutan yang cerdas. Dalam lingkungan kerja ini, Anda dapat memperluas wawasan dan mengasah keterampilan yang relevan dengan minat Anda. Dengan fleksibilitas dalam dinas ke luar kota tanpa lembur, dan kesiapan Anda untuk belajar dan beradaptasi, Anda dapat menemukan kesempatan besar untuk terus berkembang di bidang ini.";
+                }
+            }
+        
         }
     });
 </script>
