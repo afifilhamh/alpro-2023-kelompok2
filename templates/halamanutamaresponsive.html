@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOB MATCH: Job Recommendation Based on Your Needs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    }
+
+    body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #3C69A4; /* Warna latar belakang */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh
+    }
+
+    #header {
+    background-color: #233B65;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    }
+
+    #navigation {
+    display: flex;
+    gap: 20px;
+    }
+
+    .button {
+    background-color: #233B65;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+    text-decoration: none;
+    }
+
+    .button:hover {
+    background-color: #E1F0F6;
+    color: #233B65;
+    }
+
+    #logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    }
+
+    #main-container {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    }
+
+    #left-box {
+    background-color: #3C69A4;
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+
+    .start-button {
+    background-color: #233B65;
+    color: #E1F0F6;
+    padding: 15px 30px; 
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s ease;
+    display: inline-block;
+    max-width: 150px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    }
+
+    .start-button:hover {
+    transform: scale(1.05);
+    }
+
+    #right-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      margin-bottom: 0; 
+    }
+
+
+    #image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    }
+
+    #blue-box {
+    background-color: #77AFDD;
+    padding: 20px;
+    flex: 1;
+    }
+
+    #title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 65px;
+    font-weight: 700;
+    color: #E1F0F6;
+    margin-bottom: 10px;
+    }
+
+    #subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size:26px; /* Menyesuaikan ukuran font */
+    font-weight: bold;
+    color: #E1F0F6;
+    margin-bottom: 5px;
+    }
+
+    #paragraph {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    color: #E1F0F6;
+    line-height: 1.5; 
+    text-align: justify;
+    margin-right: 10px;/* Menyesuaikan line-height untuk keterbacaan */
+    margin-top:5px;
+    }
+    
+    h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    color: #E1F0F6;
+    line-height: 1.5; 
+    text-align: justify;
+    margin-right: 10px;/* Menyesuaikan line-height untuk keterbacaan */
+    margin-top:5px;
+    }
+
+    #testimonial-container {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    color: #E1F0F6;
+    line-height: 1.5; 
+    text-align: justify;
+    margin-right: 10px;/* Menyesuaikan line-height untuk keterbacaan */
+    margin-top:5px;
+    }
+    
+    .menu-toggle {
+      display: none; /* toggle disembunyikan kalau layar besar */
+    }
+
+    .menu-items {
+      display: flex;
+    }
+
+    @media screen and (max-width: 600px) {
+      .menu-toggle {
+        display: block; /* toggle muncul kalau layar kecil*/
+        cursor: pointer;
+      }
+
+      .menu-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        background-color: #233B65;
+        width: 100%;
+        z-index: 1;
+        border-bottom-left-radius: 10px; 
+        border-bottom-right-radius: 10px;
+      }
+
+      .menu-items a {
+        padding: 15px 15px; 
+        text-align: right;
+        font-size: 14px; 
+        background-color: #233B65;
+        color: #ffffff; 
+      }
+
+      .menu-items a:hover {
+        background-color: #233B65;
+        color: #77AFDD;
+      }
+
+      #navigation {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button {
+        margin-bottom: 10px;
+      }
+
+      #main-container {
+        flex-direction: column; 
+      }
+
+      #image {
+        order: 1; 
+      }
+
+      #left-box {
+        order: 2; 
+      }
+
+      #right-box {
+        order: 2; 
+      }
+
+
+      #title {
+        font-size: 30px;
+      }
+
+      #subtitle {
+        font-size: 18px;
+      }
+
+      #paragraph,
+      h2,
+      #testimonial-container {
+        font-size: 14px;
+      }
+
+      .start-button {
+        font-size: 14px;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <div id="navigation">
+      <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+      <div class="menu-items">
+        <a href="http://127.0.0.1:5000/" class="button">Halaman Utama</a>
+        <a href="http://127.0.0.1:5000/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
+        <a href="http://127.0.0.1:5000/tentangkami" class="button">Tentang Kami</a>
+      </div>
+    </div>
+    <img id="logo" src="/static/logo.png" alt="Logo">
+  </div>
+  
+
+  <div id="main-container">
+    <div id="left-box">
+      <div>
+        <div id="title">JOBMATCH</div>
+        <div id="subtitle">Job Recommendation Based on Your Need</div>
+        <div id="paragraph">
+          Di sini, JOBMATCH akan membantu Anda menemukan posisi dalam perusahaan yang sesuai dengan profil dan keinginan Anda.
+          Bersama kami, Anda dapat menemukan peluang karier yang tepat dengan cepat dan mudah!
+        </div>
+        <a href="http://127.0.0.1:5000/temukanpekerjaan" class="start-button">Mulai Sekarang</a>
+      </div>
+
+    </div>
+    <div id="right-box">
+      <img id="image" src="/static/halamanutama.png" alt="Image">
+      <div id="blue-box">
+        <h2>Testimoni Pengguna</h2>
+        <div id="testimonial-container"></div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Array testimoni
+    const testimonials = [
+        { text: 'Proses pencarian pekerjaan jadi lebih mudah dan cepat berkat JOBMATCH', author: 'Rahmat, 28 tahun, karyawan swasta' },
+        { text: 'Rekomendasi JOBMATCH membantu saya menemukan pekerjaan yang sesuai dengan latar belakang pendidikan saya.', author: 'Grace, 23 tahun, fresh graduate' },
+        { text: 'Berkat JOBMATCH, saya bisa menemukan posisi yang nyaman dan sesuai kebutuhan setelah 5 tahun menjadi ibu rumah tangga.', author: 'Safitri, 30 tahun, karyawan swasta' },
+        { text: 'Terimakasih JOBMATCH! Rekomendasi yang diberikan membuat saya tidak ragu menjadi karyawan pasca pandemi.', author: 'Puji, 37 tahun,  mantan pemilik persewaan mobil' }
+    ];
+
+    // menampilkan testimoni
+    function displayTestimonial() {
+        const testimonialContainer = document.getElementById('testimonial-container');
+        const testimonial = getRandomTestimonial();
+
+        testimonialContainer.innerHTML = `
+            <p>"${testimonial.text}"</p>
+            <p class="author">- ${testimonial.author}</p>
+        `;
+    }
+
+    // mengacak testimoni
+    function getRandomTestimonial() {
+        return testimonials[Math.floor(Math.random() * testimonials.length)];
+    }
+
+    // testimoni pertama saat halaman dibuka
+    displayTestimonial();
+
+    // ganti testimoni setiap kali tombol reload diklik
+    const reloadButton = document.querySelector('.button'); // Ganti dengan selector yang sesuai
+    if (reloadButton) {
+        reloadButton.addEventListener('click', displayTestimonial);
+    }
+});
+
+  function toggleMenu() {
+    var menuItems = document.querySelector('.menu-items');
+    menuItems.style.display = (menuItems.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+</script>
+
+</html>

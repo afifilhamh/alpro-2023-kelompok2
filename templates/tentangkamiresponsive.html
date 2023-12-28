@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB MATCH: Job Recommendation Based on Your Needs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #77AFDD;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #header {
+            background-color: #233B65;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        #navigation {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            background-color: #233B65;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #E1F0F6;
+            color: #233B65;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-container {
+            text-align: center;
+            margin: 25px auto;
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .brand-container h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            color: #233B65;
+            margin-bottom: 0;
+        }
+
+        .brand-container h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 30px;
+            color: #233B65;
+            margin-bottom: 15px;
+        }
+
+        .brand-container p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 18px;
+            color: #233B65;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .brand-container #logo-brand {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .menu-toggle {
+            display: none; /* toggle disembunyikan kalau layar besar */
+        }
+
+        .menu-items {
+            display: flex;
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu-toggle {
+                display: block; /* toggle muncul kalau layar kecil*/
+                cursor: pointer;
+            }
+
+            .menu-items {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                background-color: #233B65;
+                width: 100%;
+                z-index: 1;
+                border-bottom-left-radius: 10px; 
+                border-bottom-right-radius: 10px;
+            }
+
+            .menu-items a {
+                padding: 15px 15px; 
+                text-align: right;
+                font-size: 14px; 
+                background-color: #233B65;
+                color: #ffffff; 
+            }
+
+            .menu-items a:hover {
+                background-color: #233B65;
+                color: #77AFDD;
+            }
+
+            #navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="navigation">
+            <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+            <div class="menu-items">
+                <a href="http://127.0.0.1:5000/" class="button">Halaman Utama</a>
+                <a href="http://127.0.0.1:5000/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
+                <a href="http://127.0.0.1:5000/tentangkami" class="button">Tentang Kami</a>
+            </div>
+        </div>
+        <img id="logo" src="/static/logo.png" alt="Logo">
+    </div>
+
+    <div class="brand-container">
+        <h1>JOBMATCH</h1>
+        <h2>Tentang Kami</h2>
+        <img id="logo-brand" src="/static/logo.png" alt="Logo">
+        <p>Web app ini merupakan hasil kerja keras Afif, Tika, dan Aura <br>
+            dari Matkul Algoritma Pemrograman II Kelas SD-A1 <br>
+            Prodi Teknologi Sains Data Universitas Airlangga.</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menuItems = document.querySelector('.menu-items');
+            menuItems.style.display = (menuItems.style.display === 'flex') ? 'none' : 'flex';
+        }
+    </script>
+</body>
+
+</html>
