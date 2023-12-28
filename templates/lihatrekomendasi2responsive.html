@@ -93,7 +93,7 @@
             margin-top: 5px;
             margin-bottom: 5px
         }
-        
+
         .insight-container {
             width: 83%
         }
@@ -107,7 +107,7 @@
         }
 
         @media screen and (max-width: 600px) {
-        .menu-toggle { 
+        .menu-toggle {
             display: block; /* toggle muncul kalau layar kecil*/
             cursor: pointer;
         }
@@ -120,16 +120,16 @@
             background-color: #233B65;
             width: 100%;
             z-index: 1;
-            border-bottom-left-radius: 10px; 
+            border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
 
         .menu-items a {
-            padding: 15px 15px; 
+            padding: 15px 15px;
             text-align: right;
-            font-size: 14px; 
+            font-size: 14px;
             background-color: #233B65;
-            color: #ffffff; 
+            color: #ffffff;
         }
 
         .menu-items a:hover {
@@ -158,14 +158,14 @@
         <div id="navigation">
           <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
           <div class="menu-items">
-            <a href="http://127.0.0.1:5000/" class="button">Halaman Utama</a>
-            <a href="http://127.0.0.1:5000/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
-            <a href="http://127.0.0.1:5000/tentangkami" class="button">Tentang Kami</a>
+            <a href="https://auranajma.pythonanywhere.com/" class="button">Halaman Utama</a>
+            <a href="https://auranajma.pythonanywhere.com/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
+            <a href="https://auranajma.pythonanywhere.com/tentangkami" class="button">Tentang Kami</a>
           </div>
         </div>
-        <img id="logo" src="/static/logo.png" alt="Logo">
+        <img id="logo" src="/static/logo.PNG" alt="Logo">
       </div>
-      
+
 
     <div class="result-container">
         <h2>HASIL REKOMENDASI</h2>
@@ -191,7 +191,7 @@
             const overtime = "{{ overtime }}";
             const totalYears = parseInt("{{ totalYears }}");
             const businessTravel = "{{ businessTravel }}";
-            const educationField = "{{ educationField }}"; 
+            const educationField = "{{ educationField }}";
 
             // Menetapkan insight berdasarkan prediction
             switch (prediction) {
