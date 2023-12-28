@@ -1,16 +1,18 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from joblib import load
-
+import os
 app = Flask(__name__)
+script_directory = os.path.dirname(os.path.realpath(__file__))
+print(script_directory)
 
-# Load model yang sudah disave
-model_filename = 'model3.joblib'
+model_filename = os.path.join(script_directory, 'model3.joblib')
+
+with app.app_context():
+    model_filename = os.path.join(app.root_path, 'model3.joblib')
+
 model = load(model_filename)
 
-# Load label encoders yang digunakan saat training
-label_encoders_filename = 'encoders3.joblib'
-label_encoders = load(label_encoders_filename)
 
 nilai_tukar_usd_to_idr = 15633.25
 
@@ -18,6 +20,13 @@ nilai_tukar_usd_to_idr = 15633.25
 @app.route('/lihatrekomendasi', methods=["GET", "POST"])
 def seeResult():
     if request.method == 'POST':
+        label_encoders_filename = os.path.join(script_directory, 'encoders3.joblib')
+
+        with app.app_context():
+            label_encoders_filename = os.path.join(app.root_path, 'encoders3.joblib')
+
+        # Load label encoders from the joblib file
+        label_encoders = load(label_encoders_filename)
         # dapatkan input user dari form
         form_data = {
             'Name': request.form['name'].title(),
@@ -43,7 +52,7 @@ def seeResult():
         nama = form_data['Name']
 
         #Menambahkan variabel baru sesuai usia, karena kalau kita tetap ambil dari form, nanti bermasalah saat ada yang pilih No krn di data train ga ada
-        new_df['Over18'] = ''  
+        new_df['Over18'] = ''
         new_df.loc[new_df['Age'] > 18, 'Over18'] = 'Y'
         new_df.insert(new_df.columns.get_loc('Gender'), 'Over18', new_df.pop('Over18'))
 
