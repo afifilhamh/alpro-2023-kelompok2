@@ -2,6 +2,7 @@
 - HREmployee.csv = data yang digunakan untuk membentuk model
 - auranajma_pythonanywhere_com_wsgi.py = wsgi untuk menjalankan web app di python anywhere
 - encoders3.joblib = menyimpan label encoder yang digunakan di model untuk digunakan di web app
+- flask_injupyter.ipynb = training script
 - flask_app.py = kode web app
 - model3.joblib = model yang digunakan di web app
 - Di dalam folder static:
