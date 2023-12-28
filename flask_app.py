@@ -51,7 +51,6 @@ def seeResult():
         new_df = pd.DataFrame([form_data])
         nama = form_data['Name']
 
-        #Menambahkan variabel baru sesuai usia, karena kalau kita tetap ambil dari form, nanti bermasalah saat ada yang pilih No krn di data train ga ada
         new_df['Over18'] = ''
         new_df.loc[new_df['Age'] > 18, 'Over18'] = 'Y'
         new_df.insert(new_df.columns.get_loc('Gender'), 'Over18', new_df.pop('Over18'))
