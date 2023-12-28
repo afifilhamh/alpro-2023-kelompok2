@@ -105,7 +105,7 @@
 
         .form-container input,
         .form-container select {
-            width: 80%; 
+            width: 80%;
             padding: 10px;
             border: 1px solid #233B65;
             border-radius: 15px;
@@ -154,16 +154,16 @@
                 background-color: #233B65;
                 width: 100%;
                 z-index: 1;
-                border-bottom-left-radius: 10px; 
+                border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
             }
 
             .menu-items a {
-                padding: 15px 15px; 
+                padding: 15px 15px;
                 text-align: right;
-                font-size: 14px; 
+                font-size: 14px;
                 background-color: #233B65;
-                color: #ffffff; 
+                color: #ffffff;
             }
 
             .menu-items a:hover {
@@ -182,30 +182,30 @@
             .form-container .left,
             .form-container .middle,
             .form-container .right {
-                margin-top: 10px; 
+                margin-top: 10px;
             }
             .form-container .left {
                 order: 1;
             }
             .form-container .middle {
-                order: 2; 
+                order: 2;
             }
 
             .form-container .right {
-                order: 3; 
+                order: 3;
             }
 
             .form-container label {
-                max-width: 100%; 
+                max-width: 100%;
             }
 
             .form-container input,
             .form-container select {
-                width: 80%; 
+                width: 80%;
             }
 
             .form-container button {
-                width: 100%; 
+                width: 100%;
             }
         }
     </style>
@@ -217,14 +217,14 @@
         <div id="navigation">
           <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
           <div class="menu-items">
-            <a href="http://127.0.0.1:5000/" class="button">Halaman Utama</a>
-            <a href="http://127.0.0.1:5000/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
-            <a href="http://127.0.0.1:5000/tentangkami" class="button">Tentang Kami</a>
+            <a href="https://auranajma.pythonanywhere.com/" class="button">Halaman Utama</a>
+            <a href="https://auranajma.pythonanywhere.com/temukanpekerjaan" class="button">Temukan Pekerjaanmu</a>
+            <a href="https://auranajma.pythonanywhere.com/tentangkami" class="button">Tentang Kami</a>
           </div>
         </div>
-        <img id="logo" src="/static/logo.png" alt="Logo">
+        <img id="logo" src="/static/logo.PNG" alt="Logo">
     </div>
-      
+
 
     <form method = "post" action = /lihatrekomendasi>
         <div class="form-container">
@@ -234,7 +234,7 @@
                 <input type="text" id="name" name="name" required>
 
                 <label for="age">Berapa Umur Anda?</label>
-                <input type="number" id="age" name="age" required min="1" step="1">                
+                <input type="number" id="age" name="age" required min="1" step="1">
 
 
                 <label for="gender">Apa Jenis Kelamin Anda?</label>
@@ -257,7 +257,7 @@
                     <option value="College">Vokasi</option>
                     <option value="Bachelor">S1</option>
                     <option value="Master">S2</option>
-                    <option value="PHD">S3</option>
+                    <option value="PhD">S3</option>
                 </select>
 
 
@@ -296,20 +296,20 @@
 
                 <label for="salaryExpectation">Berapa Jumlah Gaji Yang Anda Inginkan?</label>
                 <input type="number" id="salaryExpectation" name="salaryExpectation" required min = "0" step="1">
-    
+
                 <label for="businessTravel">Seberapa Sering Anda Bersedia Dikirim Dinas Ke Luar Kota?</label>
                 <select id="businessTravel" name="businessTravel" required>
                     <option value="Travel_Frequently">Saya bersedia sering dikirim dinas ke luar kota</option>
                     <option value="Travel_Rarely">Saya bersedia sesekali dikirim dinas ke luar kota</option>
                     <option value="Non-Travel">Saya tidak bersedia dikirim dinas ke luar kota</option>
                 </select>
-    
+
                 <label for="overtime">Apakah Anda Bersedia Lembur?</label>
                 <select id="overtime" name="overtime" required>
                     <option value="Yes">Ya</option>
                     <option value="No">Tidak</option>
                 </select>
-    
+
                 <button type="submit">Kirim dan Lihat Hasil Rekomendasinya</button>
             </div>
         </div>
